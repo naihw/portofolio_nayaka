@@ -72,7 +72,10 @@ body.dark-mode .footer {
 }
 
 body.dark-mode a {
-  color: #90caf9;
+  color:hsl(207, 89.70%, 77.10%);
+}
+body.dark-mode .project-card h3 {
+  color: hsl(207, 89.70%, 77.10%);
 }
 
 body.dark-mode .btn {
@@ -101,7 +104,6 @@ body.dark-mode .about-content h3,
 body.dark-mode .about-content p,
 body.dark-mode .heading,
 body.dark-mode .skill-category,
-body.dark-mode .project-card h3,
 body.dark-mode .project-card p,
 body.dark-mode .heading-projects {
   color: #ffffff;
@@ -173,15 +175,16 @@ body.dark-mode #theme-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 150px 10% 50px;
+  padding: 120px 10% 50px;
   flex-wrap: wrap;
   background: linear-gradient(to right, #ffffff, #e3f2fd);
   min-height: 100vh;
 }
 
 .home-img {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
   border-radius: 100%;
   overflow: hidden;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
@@ -190,15 +193,15 @@ body.dark-mode #theme-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -20px; /* dikurangi agar tidak terlalu mepet */
-  margin-top: 50px;
+  margin: 30px auto 0;
   flex-shrink: 0;
 }
 
 .home-img img {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+   pointer-events: none;
 }
 
 .home-img:hover {
@@ -208,6 +211,31 @@ body.dark-mode #theme-icon {
   transition: box-shadow 0.3s ease;
  
 }
+@media (max-width: 768px) {
+  .home {
+    padding: 100px 5% 50px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .home-img {
+    margin-top: 20px;
+  }
+
+  .home-content {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-img {
+    max-width: 200px;
+  }
+}
+
 
 
 @keyframes floatImage {
@@ -323,22 +351,37 @@ body.dark-mode #theme-icon {
   padding: 150px 10% 50px;
 }
 
-.about-img img {
-  width: 250px;
-  height: 250px;
-  border: 2px solid var(--main-color);
-  border-radius: 50%;
-  box-shadow: 0 0 25px var(--main-color);
-  cursor: pointer;
-  object-fit: cover; /* Ini penting agar crop-nya pas */
-  transition: 0.4s ease-in-out;
-  margin-left: -30px;
+
+
+.about-img {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  transition: 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto 0; /* Biar tengah dan rapi */
+  flex-shrink: 0;
 }
 
-.about-img img:hover {
-  box-shadow: 0 0 25px var(--main-color),
-              0 0 35px var(--main-color),
-              0 0 55px var(--main-color);
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% center;
+}
+
+
+.about-img:hover {
+  box-shadow: 0 0 25px gray,
+              0 0 35px gray,
+              0 0 45px gray;
+  transition: box-shadow 0.3s ease;
+ 
 }
 
 .heading {
@@ -376,6 +419,10 @@ body.dark-mode #theme-icon {
   animation: fadeIn 0.4s ease-in-out;
 }
 
+body.dark-mode #more-about p,
+body.dark-mode #more-about h4 {
+  color: white;
+}
 #more-about h4 {
   font-size: 1.8rem;
   margin-top: 1rem;
@@ -407,12 +454,10 @@ body.dark-mode #theme-icon {
 
 
 
-
-/*skils page css*/
-
+/* skills page*/
 .skills {
   padding: 150px 10% 50px;
-  background:linear-gradient(to right, #ffffff, #e3f2fd);
+  background: linear-gradient(to right, #ffffff, #e3f2fd);
   text-align: center;
   min-height: 100vh;
 }
@@ -435,12 +480,13 @@ body.dark-mode #theme-icon {
   gap: 20px;
 }
 
+/* Kartu Skill */
 .skill-card {
   background: #fff;
-  padding: 15px;
+  padding: 15px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  width: 150px;
+  width: 140px;
   text-align: center;
   transition: box-shadow 0.4s ease, transform 0.4s ease;
   cursor: pointer;
@@ -448,40 +494,73 @@ body.dark-mode #theme-icon {
 }
 
 .skill-card:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
 }
 
+.skill-card img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover img {
+  transform: scale(1.1);
+}
+
+.skill-card h4 {
+  margin-top: 10px;
+  font-size: 1.05rem;
+  color: #23006c;
+}
+
+.skill-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Info Tambahan Saat Hover */
 .skill-card .level {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: orange;
-  margin-top: 8px;
+  margin-top: 5px;
   opacity: 0;
   max-height: 0;
   overflow: hidden;
   transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
-/* Saat aktif */
 .skill-card.active .level {
   opacity: 1;
-  max-height: 50px; /* cukup untuk satu baris teks */
+  max-height: 50px;
 }
 
-.skill-card img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .skill-card {
+    width: 120px;
+    padding: 10px;
+  }
+
+  .skill-card img {
+    width: 45px;
+    height: 45px;
+  }
 }
 
-.skill-card h4 {
-  margin-top: 10px;
-  font-size: 1.1rem;
+/* DARK MODE */
+body.dark-mode .skill-card {
+  background: #2b2b2b;
+  box-shadow: 0 2px 10px rgba(255,255,255,0.05);
 }
 
-.skill-card p {
-  font-size: 0.9rem;
-  color: #666;
+body.dark-mode .skill-card h4 {
+  color: #ffffff;
+}
+
+body.dark-mode .skill-card p {
+  color: #aaa;
 }
 
 /*my project css*/
@@ -715,3 +794,4 @@ body.dark-mode #theme-icon {
 html {
   scroll-behavior: smooth;
 }
+
