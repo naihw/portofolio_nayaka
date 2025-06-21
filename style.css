@@ -177,7 +177,7 @@ body.dark-mode #theme-icon {
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  background: linear-gradient(to right, #ffffff, #bbdefb);
+  background: linear-gradient(to right, #ffffff, #e3f2fd);
   min-height: 100vh;
   padding: 150px 10% 50px;
 }
