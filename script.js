@@ -1,30 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 🌟 Typing Effect
-  const typingElement = document.querySelector(".typing");
-  const text = "Mahasiswa Vokasi Universitas Brawijaya";
-  let index = 0;
+  // JS - Typed.js versi final
+const typed = new Typed('.multiple-text', {
+  strings: [
+    'Frontend Developer',
+    'Backend Developer',
+    'Web Designer',
+    'Content creator'
+  ],
+  typeSpeed: 80,
+  backSpeed: 80,
+  backDelay: 1200,
+  loop: true
+});
 
-  function type() {
-    if (index < text.length) {
-      typingElement.textContent += text.charAt(index);
-      index++;
-      setTimeout(type, 100);
-    } else {
-      setTimeout(erase, 5000);
-    }
-  }
-
-  function erase() {
-    if (index > 0) {
-      typingElement.textContent = text.substring(0, index - 1);
-      index--;
-      setTimeout(erase, 100);
-    } else {
-      setTimeout(type, 1000);
-    }
-  }
-
-  type(); // mulai efek mengetik
 
   // 🔧 Skills Card Toggle
   const skillCards = document.querySelectorAll(".skill-card");
